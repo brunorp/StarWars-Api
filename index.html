@@ -30,49 +30,117 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
     <style type="text/css">
+        h2{
+            font-family: "Comic Sans MS", arial;
+        }
+        p{
+            font-family: "Comic Sans MS", arial;
+        }
 
-    input[type=text]{     
-    border-radius:4px;
-    -moz-border-radius:4px;
-    -webkit-border-radius:4px;
-    box-shadow: 1px 1px 2px #333333;    
-    -moz-box-shadow: 1px 1px 2px #333333;
-    -webkit-box-shadow: 1px 1px 2px #333333;
-    background: #FFFFFF; 
-    border:1px solid #000000;
-    width:500px;
-    height:45px;
-    color: black;
-}
+        input[type=text] {
+            border-radius: 4px;
+            -moz-border-radius: 4px;
+            /* FireFox */
+            -webkit-border-radius: 4px;
+            /* Safari e Chrome */
+            box-shadow: 1px 1px 2px #333333;
+            -moz-box-shadow: 1px 1px 2px #333333;
+            /* FireFox */
+            -webkit-box-shadow: 1px 1px 2px #333333;
+            /* Safari e Chrome */
+            background: #FFFFFF;
+            border: 1px solid #000000;
+            width: 500px;
+            height: 45px;
+            color: black;
+        }
+        
+        ::-webkit-input-placeholder {
+            font: 12px "Comic Sans MS", arial, sans-serif;
+            font-size: 25px;
+        }
+        
+        table {
+            border-radius: 5px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+        
+        td {
+            color: #000000;
+        }
+        
+        tr
+        /*:nth-child(even)*/
+        
+        {
+            background-color: #f2f2f2
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        input[type=radio] {
+            -moz-transform: scale(2);
+            /* FireFox */
+            -webkit-transform: scale(2);
+            /* Safari e Chrome */
+            padding: 10px;
+        }
+        
+        .checkboxtext {
+            font-size: 130%;
+            display: inline;
+        }
+        
+        .box {
+            width: 800px;
+            height: 500px;
+            background-color: #000000;
+            border-radius: 10px;
+        }
+        
+        .th_quiz {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-size: 30px;
+        }
+        
+        .th_quiz_img {
+            background-color: #000000;
+        }
 
-::-webkit-input-placeholder {
-   font: 12px "Comic Sans MS", arial, sans-serif;
-   font-size: 25px;
-}
-
-table {
-    border-radius:5px;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    text-align: left;
-    padding: 8px;
-}
-
-td {
+        .link{
+            color:#FFFFFF;
+        }
+        .link:hover{
+            color: #006400 ;
+        }
+        .btn_ent {
+    font-family: "Comic Sans MS", arial;
+    font-size: 15px;
     color: #000000;
+    padding: 8px 20px;
+    background: #00FF7F;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+}
+.btn_ent:hover{
+    color:#000000;
 }
 
-tr/*:nth-child(even)*/{background-color: #f2f2f2}
 
-th {
-    background-color: #4CAF50;
-    color: white;
-}
     </style>
 
 </head>
@@ -99,13 +167,16 @@ th {
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#sobre">Sobre</a>
+                        <a class="page-scroll" href="#sobre" style="font-family:'Comic Sans MS', arial;">Sobre</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#section_search">Pesquisar</a>
+                        <a class="page-scroll" href="#section_search" style="font-family:'Comic Sans MS', arial;">Pesquisar</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#section_pessoal">Informações pessoais</a>
+                        <a class="page-scroll" href="#section_ent" style="font-family:'Comic Sans MS', arial;">Entretenimento</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#section_pessoal" style="font-family:'Comic Sans MS', arial;">Informações pessoais</a>
                     </li>
                 </ul>
             </div>
@@ -138,7 +209,7 @@ th {
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Sobre Star Wars</h2>
                 <p> A franquia conta com uma série de sete filmes de fantasia científica. Para ficar por dentro dos filmes da saga Star Wars, assista esse vídeo</p>
-                 <iframe width="560" height="315" src="https://www.youtube.com/embed/3UaCDk0zStA" frameborder="0" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/3UaCDk0zStA" frameborder="0" allowfullscreen></iframe>
                 <p>A série teve início com o simples título Star Wars, criado e dirigido por George Lucas, lançado em 25 de maio de 1977. Na época da sua estreia foi a maior bilheteria de todos os tempos, arrecadando US$ 775.398.007 milhões de dólares e ganhando sete prêmios no Óscar.</p>
                 <p></p>
             </div>
@@ -147,52 +218,173 @@ th {
 
     <section id="section_search" class="container content-section text-center">
         <div class="row">
-                    <hr>
+            <hr>
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Pesquisar</h2>
-               <h2><input type="text" id="input_pesquisar" placeholder=" Pesquisar personagem"> <a href="javascript:void(0)" onclick="pesquisa_sw()"><i class="fa fa-search"></i></a></h2>
+                <h2><input type="text" id="input_pesquisar" placeholder=" Pesquisar personagem"> <a href="#section_info" onclick="pesquisa_sw()"><i class="fa fa-search"></i></a></h2>
                 <table>
-                <thead id="tabela_search">
-                    
-                </thead>
-                <tbody id="tabela_search_body">
-                    
-                </tbody>
-                
+                    <thead id="tabela_search">
+
+                    </thead>
+                    <tbody id="tabela_search_body">
+
+                    </tbody>
+
                 </table>
             </div>
         </div>
     </section>
-    <section id="section_info" class="container content-section text-center">
+   <section id="section_info" class="container content-section text-center">
         <div class="row">
-                    <hr>
+            <hr>
             <div class="col-lg-8 col-lg-offset-2">
-                    <h2 id="nome"> </h2>
-                    <div id="imagem">
-                    
-                    </div>
-                 <table>
-                 <thead>
-                     <tr>
-                      <th>Altura</th>
-                      <th>Peso</th>
-                      <th>Gênero</th>
-                      <th>Planeta</th>
-                     </tr>
-                 </thead>
-                 <tbody id="tabela_info">
-                     
-                 </tbody>
-                 <tfooter>
-                     <tr>
-                         <td bgcolor="#4CAF50" colspan="4"><input type="button" value="Voltar" id="btn_voltar"></td>
-                     </tr>
-                 </tfooter>
-                </table>
-                </div>
-                </div>
-                </section>
+                <h2 id="nome"> </h2>
+                <div id="imagem">
 
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Altura</th>
+                            <th>Peso</th>
+                            <th>Gênero</th>
+                            <th>Planeta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela_info">
+
+                    </tbody>
+                    <tfooter>
+                        <tr>
+                            <td bgcolor="#4CAF50" colspan="4">
+                                <input type="button" value="Voltar" id="btn_voltar">
+                            </td>
+                        </tr>
+                    </tfooter>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="section_ent" class="container content-section text-center">
+        <div class="row">
+            <hr>
+            <div class="col-lg-8 col-lg-offset-2">
+                <form name="formmail">
+                    <h2>Entretenimento</h2>
+                    <div id="menu_ent">
+                        <button type="button" name="" value="" class="btn_ent">Com quem você se parece?</button>
+                    </div>
+                    <div id="parte1">
+                      <h2><input type="text" id="inpt_nome" placeholder="Digite o seu nome"></h2>
+                      <h2><a href="javascript:void(0)" id="btn_avancar1"><i class="fa fa-arrow-circle-right"></i></a></h2>
+                    </div>
+                    <table id="parte2">
+                        <tr>
+                            <th rowspan="5"><img src="img/vader.ico"></th>
+                            <th><span class="checkboxtext">Onde você gostaria de viver?</span></th>
+                            <th rowspan="5"><img src="img/yoda.ico">
+                        </tr>
+                        <tbody id="corpo_tabela_quiz">
+
+                        </tbody>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">
+                            <h6></h6>
+                            <h1>&nbsp;&nbsp;&nbsp;<a class="link" href="#section_ent" id="btn_voltar2"><i class="fa fa-arrow-left"></i></a>
+                            <a class="link" href="javascript:void(0)" id="btn_avancar2"><i class="fa fa-arrow-right"></i></a></h1>
+                            </th>
+                        </tr>
+                    </table>
+                    <table id="parte3">
+                        <tr>
+                            <th rowspan="5"><img src="img/vader.ico"></th>
+                            <th><span class="checkboxtext">Com qual frase você mais se identifica?</span></th>
+                            <th rowspan="5"><img src="img/yoda.ico">
+                        </tr>
+                        <tbody id="corpo_tabela_quiz2">
+
+                        </tbody>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">
+                            <h6></h6>
+                            <h1>&nbsp;&nbsp;&nbsp;<a class="link" href="javascript:void(0)" id="btn_voltar3"><i class="fa fa-arrow-left"></i></a>
+                            <a class="link" href="javascript:void(0)" id="btn_avancar3"><i class="fa fa-arrow-right"></i></a></h1>
+                            </th>
+                        </tr>
+                    </table>
+                     <table id="parte4">
+                        <tr>
+                            <th rowspan="5"><img src="img/vader.ico"></th>
+                            <th><span class="checkboxtext">Qual é a sua cor preferida?</span></th>
+                            <th rowspan="5"><img src="img/yoda.ico">
+                        </tr>
+                        <tbody id="corpo_tabela_quiz3">
+
+                        </tbody>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">
+                            <h6></h6>
+                            <h1>&nbsp;&nbsp;&nbsp;<a class="link" href="javascript:void(0)" id="btn_voltar4"><i class="fa fa-arrow-left"></i></a>
+                            <a class="link" href="javascript:void(0)" id="btn_avancar4"><i class="fa fa-arrow-right"></i></a></h1>
+                            </th>
+                        </tr>
+                    </table>
+                     <table id="parte5">
+                        <tr>
+                            <th rowspan="5"><img src="img/vader.ico"></th>
+                            <th><span class="checkboxtext">Qual é a sua característica especial?</span></th>
+                            <th rowspan="5"><img src="img/yoda.ico">
+                        </tr>
+                        <tbody id="corpo_tabela_quiz4">
+
+                        </tbody>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">
+                            <h6></h6>
+                            <h1>&nbsp;&nbsp;&nbsp;<a class="link" href="javascript:void(0)" id="btn_voltar5"><i class="fa fa-arrow-left"></i></a>
+                            <a class="link" href="javascript:void(0)" id="btn_avancar5"><i class="fa fa-arrow-right"></i></a></h1>
+                            </th>
+                        </tr>
+                    </table>
+                    <table id="parte6">
+                        <tr>
+                            <th rowspan="5"><img src="img/vader.ico"></th>
+                            <th><span class="checkboxtext">Cérebro ou armas?</span></th>
+                            <th rowspan="5"><img src="img/yoda.ico">
+                        </tr>
+                        <tbody id="corpo_tabela_quiz5">
+
+                        </tbody>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">
+                            <h6></h6>
+                            <h1>&nbsp;&nbsp;&nbsp;<a class="link" href="javascript:void(0)" id="btn_voltar6"><i class="fa fa-arrow-left"></i></a>
+                            <a class="link" href="javascript:void(0)" id="btn_avancar6"><i class="fa fa-arrow-right"></i></a></h1>
+                            </th>
+                        </tr>
+                    </table>
+                     <table id="parte7_resultado">
+                        <tbody id="corpo_tabela_quiz6">
+
+                        </tbody>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">
+                            <h6></h6>
+                            <h1>&nbsp;&nbsp;&nbsp;<a class="link" href="javascript:void(0)" id="btn_voltar7"><i class="fa fa-arrow-left"></i></a>
+                            </th>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section id="section_pessoal" class="container content-section text-center">
@@ -237,7 +429,7 @@ th {
     <!-- Theme JavaScript -->
     <script src="js/grayscale.min.js"></script>
     <script src="../lib/swapi.js"></script>
-    <script type="text/javascript" src="js/info.js"></script> 
+    <script type="text/javascript" src="js/info.js"></script>
 
 </body>
 
