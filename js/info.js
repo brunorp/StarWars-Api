@@ -111,6 +111,151 @@
 					$("#imagem").html('<img src="img/Boba-Fett-icon.png" center>')
 				else if(nome == "Sebulba")
 					$("#imagem").html('<img src="img/Sebulba.png" center>')
+				else if(nome == "Qui-Gon Jinn")
+					$("#imagem").html('<img src="img/Qui.png" center>')
+				else if(nome == "Nute Gunray")
+					$("#imagem").html('<img src="img/Nute.png" center>')
+				else if(nome == "Finis Valorum")
+					$("#imagem").html('<img src="img/valorum.png" center>')
+				else if(nome == "Jar Jar Binks")
+					$("#imagem").html('<img src="img/Jar.png" center>')
+				else if(nome == "Roos Tarpals")
+					$("#imagem").html('<img src="img/tarpals.png" center>')
+				else if(nome == "Rugor Nass")
+					$("#imagem").html('<img src="img/nass.png" center>')
+				else if(nome == "Ric Olié")
+					$("#imagem").html('<img src="img/ric.png" center>')
+				else if(nome == "Watto")
+					$("#imagem").html('<img src="img/watto.png" center>')
+				else if(nome == "Quarsh Panaka")
+					$("#imagem").html('<img src="img/panaka.jpg" center>')
+				else if(nome == "Shmi Skywalker")
+					$("#imagem").html('<img src="img/shmi.png" center>')
+				else if(nome == "Darth Maul")
+					$("#imagem").html('<img src="img/maul.png" center>')
+				else if(nome == "Bib Fortuna")
+					$("#imagem").html('<img src="img/bib.png" center>')
+				else if(nome == "Ayla Secura")
+					$("#imagem").html('<img src="img/Aayla.png" center>')
+				else if(nome == "Dud Bolt")
+					$("#imagem").html('<img src="img/Dud.jpg" center>')
+				else if(nome == "Gasgano")
+					$("#imagem").html('<img src="img/gasgano.png" center>')
+				else if(nome == "Ben Quadinaros")
+					$("#imagem").html('<img src="img/ben.png" center>')
+				else if(nome == "Mace Windu")
+					$("#imagem").html('<img src="img/windu.png" center>')
+				else if(nome == "Kit Fisto")
+					$("#imagem").html('<img src="img/fisto.png" center>')
+				else if(nome == "Eeth Koth")
+					$("#imagem").html('<img src="img/koth.png" center>')
+				else if(nome == "Adi Gallia")
+					$("#imagem").html('<img src="img/galia.png" center>')
+				else if(nome == "Saesee Tiin")
+					$("#imagem").html('<img src="img/tiin.png" center>')
+				else if(nome == "Yarael Poof")
+					$("#imagem").html('<img src="img/poof.jpg" center>')
+				else if(nome == "Plo Koon")
+					$("#imagem").html('<img src="img/koon.png" center>')
+				else if(nome == "Mas Amedda")
+					$("#imagem").html('<img src="img/Amedda.png" center>')
+				else if(nome == "Gregar Typho")
+					$("#imagem").html('<img src="img/typho.png" center>')
+				else if(nome == "Cliegg Lars")
+					$("#imagem").html('<img src="img/lars2.png" center>')
+				else if(nome == "Poggle the Lesser")
+					$("#imagem").html('<img src="img/lesser.png" center>')
+				else if(nome == "Luminara Unduli")
+					$("#imagem").html('<img src="img/luminara.jpg" center>')
+				else if(nome == "Barriss Offee")
+					$("#imagem").html('<img src="img/barriss.png" center>')
+				else if(nome == "Dooku")
+					$("#imagem").html('<img src="img/Dooku.png" center>')
+				else if(nome == "Jango Fett")
+					$("#imagem").html('<img src="img/fett.png" center>')
+				else if(nome == "Dexter Jettster")
+					$("#imagem").html('<img src="img/dexter.jpg" center>')
+				else if(nome == "Lama Su")
+					$("#imagem").html('<img src="img/xx.png" center>')
+				else if(nome == "Taun We")
+					$("#imagem").html('<img src="img/xx.png" center>')
+				else if(nome == "Jocasta Nu")
+					$("#imagem").html('<img src="img/jocasta.png" center>')
+				else if(nome == "Ratts Tyerell")
+					$("#imagem").html('<img src="img/rats.png" center>')
+				else if(nome == "R4-P17")
+					$("#imagem").html('<img src="img/r2.jpg" center>')
+				else if(nome == "Wat Tambor")
+					$("#imagem").html('<img src="img/wat.png" center>')
+				else if(nome == "San Hill")
+					$("#imagem").html('<img src="img/hill.png" center>')
+				else if(nome == "Shaak Ti")
+					$("#imagem").html('<img src="img/shaak.png" center>')
+				else if(nome == "Tarfful")
+					$("#imagem").html('<img src="img/Tarrful.png" center>')
+				else if(nome == "Tion Medon")
+					$("#imagem").html('<img src="img/Pauan.png" center>')
+				else if(nome == "BB8")
+					$("#imagem").html('<img src="img/bb8.png" center>')
+				else if(nome == "Padmé Amidala")
+					$("#imagem").html('<img src="img/padme.png" center>')
+
+				
+				
+
+				
+				
+
+				
+				
+				
+				
+				
+
+
+				
+				
+
+				
+
+				
+				
+				
+
+				
+
+				
+				
+
+				
+				
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+				
+
+				
 
 
 				
