@@ -6,8 +6,13 @@
 						$("#tabela_search_body").append(add_resultados_tabela);
 						})
 	 				if(data.next != null){
-	 					var link_next = data.next.replace('http://swapi.co/api/people/?page=' , '');
-	 					swapiModule.getPeople(link_next, lista);
+	 					var next = data.next;
+	 					var char_especial = next.indexOf("&"); 
+	 					var search = (next.substring(28, char_especial)); // pega a url do char 28 até chegar em um "&".
+	 					var quebra_url = next.split('=');
+	 					var numero_pagina = quebra_url[2]; // pega a terceira string que está depois de um "=", que no caso é o número da página.
+	 					var monta_url = numero_pagina+"&"+search;
+	 					swapiModule.getPeople(monta_url, lista);
 	 				}
 				}
 
