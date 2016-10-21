@@ -74,6 +74,7 @@
 			    $("#parte6").hide();
 			})
 			$("#btn_repeat").on('click', function(){
+				pontos = 0;
 				$("#input_nome_quiz1").html('<h2 id="input_nome_quiz1"><input type="text" id="inpt_nome" placeholder="Digite o seu nome"></h2>');
 				$("#parte1").fadeIn(1500);
 			    $("#parte2").hide();
@@ -85,6 +86,7 @@
 			    $("#parte7_resultado").hide();
 			})
 			$("#btn_repeat_quiz2").on('click', function(){
+				acertou = 0;
 				$("#input_nome_quiz2").html('<h2 id="input_nome_quiz2"><input type="text" id="inpt_nome2" placeholder="Digite o seu nome"></h2>');
 				$("#parte1_quiz2").fadeIn(500);
 			    $("#parte2_quiz2").hide();
@@ -211,6 +213,7 @@
 				acertos = getRadioValor("questao1_2")
 				if(acertos == 1)
 					acertou++;
+				console.log(acertou);
 				var conteudo_td = '';
 				$("#menu_ent").hide();
 			    $("#parte1_quiz2").hide();
@@ -237,6 +240,7 @@
 				acertos = getRadioValor("questao2_2")
 				if(acertos == 2)
 					acertou++;
+				console.log(acertou);
 				$("#menu_ent").hide();
 			    $("#parte1_quiz2").hide();
 				$("#parte2_quiz2").hide();
@@ -251,6 +255,7 @@
 				acertos = getRadioValor("questao3_2")
 				if(acertos == 4)
 					acertou++;
+				console.log(acertou);
 				$("#menu_ent").hide();
 			    $("#parte1_quiz2").hide();
 				$("#parte2_quiz2").hide();
@@ -266,6 +271,7 @@
 				acertos = getRadioValor("questao4_2")
 				if(acertos == 2)
 					acertou++;
+				console.log(acertou);
 				$("#menu_ent").hide();
 			    $("#parte1_quiz2").hide();
 				$("#parte2_quiz2").hide();
@@ -280,6 +286,7 @@
 				acertos = getRadioValor("questao5_2")
 				if(acertos == 1)
 					acertou++;
+				console.log(acertou);
 				$("#menu_ent").hide();
 			    $("#parte1_quiz2").hide();
 				$("#parte2_quiz2").hide();
@@ -295,6 +302,7 @@
 				acertos = getRadioValor("questao6_2")
 				if(acertos == 2)
 					acertou++;
+				console.log(acertou);
 				$("#menu_ent").hide();
 			    $("#parte1_quiz2").hide();
 				$("#parte2_quiz2").hide();
@@ -311,6 +319,7 @@
 				acertos = getRadioValor("questao7_2")
 				if(acertos == 5)
 					acertou++;
+				console.log(acertou);
 				var nome = $("#inpt_nome2").val();
 				$("#menu_ent").hide();
 			    $("#parte1_quiz2").hide();
@@ -359,6 +368,7 @@
 			    $("#parte1").fadeIn(1500);
 			})
 			$("#btn_voltar3").on('click', function(){
+				pontos -= getRadioValor("questao1");
 				$("#parte1").hide();
 			    $("#parte3").hide();
 			    $("#parte5").hide();
@@ -368,6 +378,7 @@
 			    $("#parte2").fadeIn(1500);
 			})
 			$("#btn_voltar4").on('click', function(){
+				pontos -= getRadioValor("questao2");
 				$("#parte1").hide();
 			    $("#parte2").hide();
 			    $("#parte4").hide();
@@ -377,6 +388,7 @@
 			    $("#parte3").fadeIn(1500);
 			})
 			$("#btn_voltar5").on('click', function(){
+				pontos -= getRadioValor("questao3");
 				$("#parte1").hide();
 			    $("#parte2").hide();
 			    $("#parte6").hide();
@@ -386,6 +398,7 @@
 			    $("#parte4").fadeIn(1500);
 			})
 			$("#btn_voltar6").on('click', function(){
+				pontos -= getRadioValor("questao4");
 				$("#parte1").hide();
 			    $("#parte2").hide();
 			    $("#parte6").hide();
@@ -454,6 +467,10 @@
 			    $("#parte1_quiz2").fadeIn(1500);
 			})
 			$("#btn_voltar3_quiz2").on('click', function() {
+				acertos = getRadioValor("questao1_2");
+				if(acertos == 1)
+					acertou--;
+				console.log(acertou);
 			    $("#parte1_quiz2").hide();
 				$("#parte3_quiz2").hide();
 			    $("#parte4_quiz2").hide();
@@ -463,6 +480,10 @@
 			    $("#parte2_quiz2").fadeIn(1500);
 			})
 			$("#btn_voltar4_quiz2").on('click', function() {
+				acertos = getRadioValor("questao2_2");
+				if(acertos == 2)
+					acertou--;
+				console.log(acertou);
 			    $("#parte2_quiz2").hide();
 			    $("#parte1_quiz2").hide();				
 			    $("#parte4_quiz2").hide();
@@ -472,6 +493,10 @@
 			    $("#parte3_quiz2").fadeIn(1500);
 			})
 			$("#btn_voltar5_quiz2").on('click', function() {
+				acertos = getRadioValor("questao3_2")
+				if(acertos == 4)
+					acertou--;
+				console.log(acertou);
 			    $("#parte2_quiz2").hide();
 			    $("#parte1_quiz2").hide();
 				$("#parte3_quiz2").hide();
@@ -481,6 +506,10 @@
 			    $("#parte4_quiz2").fadeIn(1500);
 			})
 			$("#btn_voltar6_quiz2").on('click', function() {
+				acertos = getRadioValor("questao4_2")
+				if(acertos == 2)
+					acertou--;
+				console.log(acertou);
 			    $("#parte2_quiz2").hide();
 			    $("#parte1_quiz2").hide();
 				$("#parte3_quiz2").hide();
@@ -490,6 +519,10 @@
 			    $("#parte5_quiz2").fadeIn(1500);
 			})
 			$("#btn_voltar7_quiz2").on('click', function() {
+				acertos = getRadioValor("questao5_2")
+				if(acertos == 1)
+					acertou--;
+				console.log(acertou);
 			    $("#parte2_quiz2").hide();
 			    $("#parte1_quiz2").hide();
 				$("#parte3_quiz2").hide();
@@ -500,6 +533,10 @@
 			    $("#parte6_quiz2").fadeIn(1500);
 			})
 			$("#btn_voltar8_quiz2").on('click', function() {
+				acertos = getRadioValor("questao6_2")
+				if(acertos == 2)
+					acertou--;
+				console.log(acertou);
 			    $("#parte2_quiz2").hide();
 			    $("#parte1_quiz2").hide();
 				$("#parte3_quiz2").hide();
