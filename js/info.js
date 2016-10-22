@@ -2,8 +2,11 @@
 		var acertos;
 		var completa_tabela;
 		var acertou = 0;
+		var errou = false;
+		var qtd_erros = 0;
 		var filmes = "";
 		var filmes2;
+		var nome_tamanho;
 
 		function lista(data) {
 		    data.results.forEach(function(item) {
@@ -36,6 +39,7 @@
 		    var personagem = nome;
 		    var url_continuacao = "&search=" + personagem;
 		    swapiModule.getPeople(url_continuacao, function(data) {
+		    	console.log(data);
 		        data.results.forEach(function(item) {
 		          //  var url_personagem = item.url;
 		          //  var quebra_url_personagem = url_personagem.split("/");
@@ -86,6 +90,7 @@
 		    $("#titulo_quiz2").hide();
 		    $("#titulo_forca").hide();
 		    $("#section_info").hide();
+		    $("#parte1_forca").hide();
 		    $("#parte1_quiz2").hide();
 		    $("#parte2_quiz2").hide();
 		    $("#parte3_quiz2").hide();
@@ -94,6 +99,7 @@
 		    $("#parte6_quiz2").hide();
 		    $("#parte7_quiz2").hide();
 		    $("#parte8_quiz2").hide();
+		    $("#subtitulo_forca").hide();
 		    $("#subtitulo_quiz1").hide();
 		    $("#subtitulo_quiz2").hide();
 		    $("#parteX_resultado_quiz2").hide();
@@ -369,6 +375,7 @@
 		$("#btn_voltar1").on('click', function() {
 		    $("#parte2").hide();
 		    $("#titulo_forca").hide();
+		    $("#subtitulo_forca").hide();
 		    $("#titulo_quiz1").hide();
 		    $("#titulo_quiz2").hide();
 		    $("#subtitulo_quiz1").hide();
@@ -441,6 +448,7 @@
 		    $("#parte4").hide();
 		    $("#parte3").hide();
 		    $("#titulo_forca").hide();
+		    $("#subtitulo_forca").hide();
 		    $("#parte5").hide();
 		    $("#menu_ent").hide();
 		    $("#titulo_quiz1").show();
@@ -455,6 +463,7 @@
 		    $("#subtitulo_ent").hide();
 		    $("#menu_ent").hide();
 		    $("#titulo_forca").hide();
+		    $("#subtitulo_forca").hide();
 		    $("#parte3_quiz2").hide();
 		    $("#parte4_quiz2").hide();
 		    $("#parte5_quiz2").hide();
@@ -464,6 +473,80 @@
 		    $("#titulo_quiz2").show();
 		    $("#parte1_quiz2").fadeIn(1500);
 		})
+		$("#btn_forca").on('click', function() {
+		    $("#titulo_ent").hide();
+		    $("#titulo_quiz1").hide();
+		    $("#parte2_quiz2").hide();
+		    $("#subtitulo_quiz1").hide();
+		    $("#subtitulo_ent").hide();
+		    $("#menu_ent").hide();
+		    $("#titulo_quiz2").hide();
+		    $("#parte3_quiz2").hide();
+		    $("#parte4_quiz2").hide();
+		    $("#parte5_quiz2").hide();
+		    $("#parte6_quiz2").hide();
+		    $("#parteX_resultado_quiz2").hide();
+		    $("#subtitulo_forca").show();
+		    $("#titulo_forca").show();
+		    $("#parte1_forca").fadeIn(1500);
+
+		    var id_personagem = parseInt(Math.random() * 88 + 1);
+
+		    swapiModule.getPerson(id_personagem, function(data){
+		    	var nome = data.name;
+		    	 nome_tamanho = new Array(nome.length);
+		    	for(var i=0; i<nome.length; i++){
+		    	if(nome.length>5)
+		    		if(i==6)
+		    		nome_tamanho[i]="__";
+		    	else
+		    	nome_tamanho[i]="__";
+		    	if (nome.charAt(i) == " ")
+                {
+                    nome_tamanho[i] = "&nbsp;";
+                }
+                else
+                	if(nome.charAt(i) == "-")
+                	{
+                		 nome_tamanho[i] = "-";
+                	}
+                else {
+                	nome_tamanho[i] = "__";//.toUpperCase();
+                }
+
+		    }
+		    var nome_person = "'" + nome + "'";
+		    console.log(nome);
+		    var conteudo_forca = '<br><br><p style="margin-left:100px; margin-top:85px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:350px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" placeholder=" Letra...">&nbsp;<a onclick="verifica([[NOME]])" class="link" href="javascript:void(0)"><i class="fa fa-check"></i></a></h2><p style="float:right; margin-right:50px; margin-top:85px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+   			conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
+   			$("#parte1_forca").append(conteudo_forca);
+		})
+		    })
+
+			function verifica(nome)
+			{  
+				var letra = $("#inpt_forca").val();
+		    	for (var i = 0; i < nome.length; i++) {                
+                       if((nome[i] == letra))
+                        {
+                            nome_tamanho[i] = letra;
+
+                            
+		         	console.log(nome_tamanho);
+		         	var nome_person = "'" + nome + "'";
+		         	var conteudo_forca = '<br><br><p style="margin-left:100px; margin-top:85px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:350px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" placeholder=" Letra...">&nbsp;<a onclick="verifica([[NOME]])" class="link" href="javascript:void(0)"><i class="fa fa-check"></i></a></h2><p style="float:right; margin-right:50px; margin-top:85px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		         	conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
+		         	$("#parte1_forca").html(conteudo_forca);	
+		         	}
+		         	else{
+		         		errou = true;
+		         	}       	
+        	} 
+        		         	if(errou)
+		         		qtd_erros ++;  
+        }
+
+
 		$("#btn_voltar1_quiz2").on('click', function() {
 		    $("#parte2_quiz2").hide();
 		    $("#subtitulo_quiz1").hide();

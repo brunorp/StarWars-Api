@@ -58,6 +58,7 @@
             color: black;
         }
          /* Estilo de todo placeholder */
+        }
         ::-webkit-input-placeholder {
             font: 12px "Comic Sans MS", arial, sans-serif;
             font-size: 25px;
@@ -113,6 +114,12 @@
         .box {
             width: 800px;
             height: 500px;
+            background-color: #4CAF50;
+            border-radius: 10px;
+        }
+        .box_esq {
+            width: 50px;
+            height: 40px;
             background-color: #000000;
             border-radius: 10px;
         }
@@ -284,7 +291,9 @@
                     <h2 id="titulo_quiz2">Quanto você sabe sobre Star Wars?</h2>
                     <label id="subtitulo_quiz2" style="color:#aaa; font-size:20px;">Não vale colar em! Estou de olho...</label>
                     <h2></h2>
-                    <h2 id="titulo_forca">Jogo da forca - Que a força esteja com você</h2>
+                    <h2 id="titulo_forca">Jogo da forca - Personagens</h2>
+                    <label id="subtitulo_forca" style="color:#aaa; font-size:20px;"> Que a força esteja com você</label>
+                     <h2></h2>
                     <div id="menu_ent">
                      <!-- PRIMEIRO QUIZ: COM QUAL PERSONAGEM VOCÊ SE PARECE?-->
                         <button type="button" id="btn_quiz1" class="btn_ent">Com quem você se parece?</button>
@@ -546,6 +555,9 @@
                         </tr>
                     </table>
                     <!-- JOGO DA FORCA-->
+                    <div class="box" id="parte1_forca">
+
+                    </div>
             </div>
         </div>
     </section>
