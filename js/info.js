@@ -2,11 +2,12 @@
 		var acertos;
 		var completa_tabela;
 		var acertou = 0;
-		var errou = false;
+		var errou = 0;
 		var qtd_erros = 0;
 		var filmes = "";
 		var filmes2;
 		var nome_tamanho;
+		var nome_array;
 
 		function lista(data) {
 		    data.results.forEach(function(item) {
@@ -89,6 +90,7 @@
 		    $("#titulo_quiz1").hide();
 		    $("#titulo_quiz2").hide();
 		    $("#titulo_forca").hide();
+		    $("#btn_voltar_ent").hide();
 		    $("#section_info").hide();
 		    $("#parte1_forca").hide();
 		    $("#parte1_quiz2").hide();
@@ -486,6 +488,7 @@
 		    $("#parte5_quiz2").hide();
 		    $("#parte6_quiz2").hide();
 		    $("#parteX_resultado_quiz2").hide();
+		    $("#btn_voltar_ent").fadeIn(1500);
 		    $("#subtitulo_forca").show();
 		    $("#titulo_forca").show();
 		    $("#parte1_forca").fadeIn(1500);
@@ -503,7 +506,7 @@
 		    	nome_tamanho[i]="__";
 		    	if (nome.charAt(i) == " ")
                 {
-                    nome_tamanho[i] = "&nbsp;";
+                    nome_tamanho[i] = " ";
                 }
                 else
                 	if(nome.charAt(i) == "-")
@@ -515,36 +518,54 @@
                 }
 
 		    }
-		    var nome_person = "'" + nome + "'";
-		    console.log(nome);
-		    var conteudo_forca = '<br><br><p style="margin-left:100px; margin-top:85px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:350px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" placeholder=" Letra...">&nbsp;<a onclick="verifica([[NOME]])" class="link" href="javascript:void(0)"><i class="fa fa-check"></i></a></h2><p style="float:right; margin-right:50px; margin-top:85px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		    var nome_person = "'" + nome.toUpperCase() + "'";
+		    console.log(nome_person);
+		    var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" onkeyup="verifica([[NOME]])" style="width:200px;" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
    			conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
-   			$("#parte1_forca").append(conteudo_forca);
+   			$("#form_forca").html(conteudo_forca);
 		})
 		    })
 
 			function verifica(nome)
-			{  
+			{   
 				var letra = $("#inpt_forca").val();
+				var count;
+				$("#inpt_forca").focus();
+				letra = letra.toUpperCase();
+				errou = 0;
 		    	for (var i = 0; i < nome.length; i++) {                
                        if((nome[i] == letra))
                         {
                             nome_tamanho[i] = letra;
-
+          		         	errou = 2;
                             
-		         	console.log(nome_tamanho);
-		         	var nome_person = "'" + nome + "'";
-		         	var conteudo_forca = '<br><br><p style="margin-left:100px; margin-top:85px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:350px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" placeholder=" Letra...">&nbsp;<a onclick="verifica([[NOME]])" class="link" href="javascript:void(0)"><i class="fa fa-check"></i></a></h2><p style="float:right; margin-right:50px; margin-top:85px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		         	var nome_person = "'" + nome.toUpperCase() + "'";
+		         	var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" onkeyup="verifica([[NOME]])" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
 		         	conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
-		         	$("#parte1_forca").html(conteudo_forca);	
-		         	}
-		         	else{
-		         		errou = true;
-		         	}       	
+		         	$("#form_forca").html(conteudo_forca);	
+		           	}
+		         	else 
+		         		if(errou != 2)
+		         			errou = 1;		         	       	
         	} 
-        		         	if(errou)
-		         		qtd_erros ++;  
-        }
+
+        		       if(errou == 1){
+        		       	alert("Errou ):");
+		         		qtd_erros += 1;
+		         		var nome_person = "'" + nome.toUpperCase() + "'";
+		         		var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" onkeyup="verifica([[NOME]])" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		         		conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
+		         		$("#form_forca").html(conteudo_forca);	
+		         		}
+		         		console.log(nome_array);
+		         		if (qtd_erros == 6) {
+		         				alert("Perdeu ):");
+		         		var nome_person = "'" + nome.toUpperCase() + "'";
+		         		var conteudo_forca = '<br><p>O personagem era:</p><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" placeholder=" Letra..." disabled></h2><p style="float:right; margin-right:50px; margin-top:30px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		         		$("#form_forca").html(conteudo_forca);	
+		         		}
+        	}
+        
 
 
 		$("#btn_voltar1_quiz2").on('click', function() {
@@ -647,6 +668,19 @@
 		    $("#parte8_quiz2").hide();
 		    $("#parteX_resultado_quiz2").hide();
 		    $("#parte7_quiz2").fadeIn(1500);
+		})
+		$("#btn_voltar_ent").on('click', function() {
+			$("#parte1_forca").hide();
+		    $("#subtitulo_quiz1").hide();
+		    $("#subtitulo_quiz2").hide();
+		    $("#subtitulo_forca").hide();
+		    $("#btn_voltar_ent").hide();
+		    $("#titulo_forca").hide();
+		    $("#titulo_quiz1").hide();
+		    $("#titulo_quiz2").hide();
+		    $("#titulo_ent").show();
+		    $("#subtitulo_ent").show();
+		    $("#menu_ent").fadeIn(1500);
 		})
 
 		function getRadioValor(name) {
