@@ -8,6 +8,8 @@
 		var filmes2;
 		var nome_tamanho;
 		var nome_array;
+		var count = 0;
+		var guarda_char = new Array();
 
 		function lista(data) {
 		    data.results.forEach(function(item) {
@@ -492,7 +494,9 @@
 		    $("#subtitulo_forca").show();
 		    $("#titulo_forca").show();
 		    $("#parte1_forca").fadeIn(1500);
-
+		    qtd_erros = 0;
+		    count = 0;
+		    guarda_char = "";
 		    var id_personagem = parseInt(Math.random() * 88 + 1);
 
 		    swapiModule.getPerson(id_personagem, function(data){
@@ -507,14 +511,16 @@
 		    	if (nome.charAt(i) == " ")
                 {
                     nome_tamanho[i] = " ";
+                    count++;
                 }
                 else
                 	if(nome.charAt(i) == "-")
                 	{
                 		 nome_tamanho[i] = "-";
+                		 count++;
                 	}
                 else {
-                	nome_tamanho[i] = "__";//.toUpperCase();
+                	nome_tamanho[i] = "__";
                 }
 
 		    }
@@ -529,16 +535,27 @@
 			function verifica(nome)
 			{   
 				var letra = $("#inpt_forca").val();
-				var count;
-				$("#inpt_forca").focus();
 				letra = letra.toUpperCase();
+				for (var x = 0; x<guarda_char.length;x++){
+					if(letra == guarda_char[x]){
+						alert("LETRA JÁ DIGITADA");
+						document.getElementById('inpt_forca').value='';
+						return;
+					}
+
+				}
+						guarda_char += letra;
+				
+				console.log(guarda_char);
 				errou = 0;
-		    	for (var i = 0; i < nome.length; i++) {                
+
+		    	for (var i = 0; i < nome.length; i++) {   
                        if((nome[i] == letra))
                         {
                             nome_tamanho[i] = letra;
           		         	errou = 2;
-                            
+                            count ++;
+                            console.log(count);
 		         	var nome_person = "'" + nome.toUpperCase() + "'";
 		         	var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" onkeyup="verifica([[NOME]])" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
 		         	conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
@@ -546,9 +563,15 @@
 		           	}
 		         	else 
 		         		if(errou != 2)
-		         			errou = 1;		         	       	
+		         			errou = 1;	         	       	
         	} 
-
+        			if(count == nome_tamanho.length){
+        				alert("Ganhou!");
+        				var conteudo_forca = '<p>PARABÉNS!</p>';
+        				$("#form_forca").append(conteudo_forca);	
+        			$("#inpt_forca").prop('disabled', true);
+        			}
+;
         		       if(errou == 1){
         		       	alert("Errou ):");
 		         		qtd_erros += 1;
@@ -557,12 +580,13 @@
 		         		conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
 		         		$("#form_forca").html(conteudo_forca);	
 		         		}
-		         		console.log(nome_array);
 		         		if (qtd_erros == 6) {
 		         				alert("Perdeu ):");
 		         		var nome_person = "'" + nome.toUpperCase() + "'";
-		         		var conteudo_forca = '<br><p>O personagem era:</p><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" placeholder=" Letra..." disabled></h2><p style="float:right; margin-right:50px; margin-top:30px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		         		var conteudo_forca2 = '<p>O personagem era:</p>';
+		         		var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" placeholder=" Letra..." disabled></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
 		         		$("#form_forca").html(conteudo_forca);	
+		         		$("#form_forca").append(conteudo_forca2);	
 		         		}
         	}
         
