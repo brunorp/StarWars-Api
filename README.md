@@ -8,7 +8,7 @@ e outro quiz sobre:
 -> "Quanto você sabe sobre Star Wars".
 
 
-Um jogo da velha sobre a saga e informações sobre a os filmes.
+Um jogo da velha sobre a saga.
 
 Para a realização da aplicação web foi utilizado: bootstrap e jQuery. 
 
