@@ -12,12 +12,13 @@
 		// Exibe a lista de personagens de acordo com a pesquisa
 		function lista(data) {
 		    data.results.forEach(function(item) {
-		        var add_resultados_tabela = "<tr><td><a href='#section_info' onclick='personagens([[NOME]])'>" + item.name + "</a></td><td>" + item.created + "</td></tr>";
-		        var nome_person = '"' + item.name + '"';
-		        add_resultados_tabela = add_resultados_tabela.replace("[[NOME]]", nome_person);
-		        $("#tabela_search_body").append(add_resultados_tabela);
-		    })
-		    // Se a tiver mais de uma página de personagens na pesquisa, pega o conteúdo do "next" e continua a recolher os dados da próxima página, até o "next" for nulo.
+		            var add_resultados_tabela = "<tr><td><a href='#section_info' onclick='personagens([[NOME]])'>" + item.name + "</a></td><td>" + item.created + "</td></tr>";
+		            var nome_person = '"' + item.name + '"';
+		            add_resultados_tabela = add_resultados_tabela.replace("[[NOME]]", nome_person);
+		            $("#tabela_search_body").append(add_resultados_tabela);
+		        })
+		    
+		        // Se a tiver mais de uma página de personagens na pesquisa, pega o conteúdo do "next" e continua a recolher os dados da próxima página, até o "next" for nulo.
 		    if (data.next != null) {
 		        var next = data.next;
 		        var char_especial = next.indexOf("&");
@@ -49,11 +50,11 @@
 		            var quebra_url_planeta = mundo.split("/");
 		            var id_planeta = quebra_url_planeta[5];
 		            swapiModule.getPlanet(id_planeta, function(valor) {
-		                
-		                    completa_tabela = "<tr> <td>" + item.height + "</td> <td>" + item.mass + "</td> <td>" + item.gender + "</td> <td>" + valor.name + "</td></tr>";
-		                    $("#tabela_info").html(completa_tabela);
-		                    $("#nome").html("<i class='fa fa-info-circle'></i> " + item.name);
-		                    imagens(personagem);
+
+		                completa_tabela = "<tr> <td>" + item.height + "</td> <td>" + item.mass + "</td> <td>" + item.gender + "</td> <td>" + valor.name + "</td></tr>";
+		                $("#tabela_info").html(completa_tabela);
+		                $("#nome").html("<i class='fa fa-info-circle'></i> " + item.name);
+		                imagens(personagem);
 		            })
 		        })
 		    })
@@ -405,15 +406,16 @@
 
 		// ao clicar no "btn_voltar2", volta para o início do primeiro quiz 
 		$("#btn_voltar2").on('click', function() {
-		    $("#parte2").hide();
-		    $("#parte3").hide();
-		    $("#menu_ent").hide();
-		    $("#parte5").hide();
-		    $("#parte6").hide();
-		    $("#parte4").hide();
-		    $("#parte1").fadeIn(1500);
-		})
-		// ao clicar no "btn_voltar3", volta para a segunda questão do primeiro quiz e diminui os pontos obtidos
+		        $("#parte2").hide();
+		        $("#parte3").hide();
+		        $("#menu_ent").hide();
+		        $("#parte5").hide();
+		        $("#parte6").hide();
+		        $("#parte4").hide();
+		        $("#parte1").fadeIn(1500);
+		    })
+
+		    // ao clicar no "btn_voltar3", volta para a segunda questão do primeiro quiz e diminui os pontos obtidos
 		$("#btn_voltar3").on('click', function() {
 		    pontos -= getRadioValor("questao1");
 		    $("#parte1").hide();
@@ -439,27 +441,29 @@
 
 		// ao clicar no "btn_voltar5", volta para a quarta questão do primeiro quiz e diminui os pontos obtidos
 		$("#btn_voltar5").on('click', function() {
-		    pontos -= getRadioValor("questao3");
-		    $("#parte1").hide();
-		    $("#parte2").hide();
-		    $("#parte6").hide();
-		    $("#parte5").hide();
-		    $("#menu_ent").hide();
-		    $("#parte3").hide();
-		    $("#parte4").fadeIn(1500);
-		})
-		// ao clicar no "btn_voltar6", volta para a quinta questão do primeiro quiz e diminui os pontos obtidos
+		        pontos -= getRadioValor("questao3");
+		        $("#parte1").hide();
+		        $("#parte2").hide();
+		        $("#parte6").hide();
+		        $("#parte5").hide();
+		        $("#menu_ent").hide();
+		        $("#parte3").hide();
+		        $("#parte4").fadeIn(1500);
+		    })
+
+		    // ao clicar no "btn_voltar6", volta para a quinta questão do primeiro quiz e diminui os pontos obtidos
 		$("#btn_voltar6").on('click', function() {
-		    pontos -= getRadioValor("questao4");
-		    $("#parte1").hide();
-		    $("#parte2").hide();
-		    $("#parte6").hide();
-		    $("#parte4").hide();
-		    $("#parte3").hide();
-		    $("#menu_ent").hide();
-		    $("#parte5").fadeIn(1500);
-		})
-		// ao clicar no "btn_quiz1", abre a janela de início do primeiro quiz (digitar o nome)
+		        pontos -= getRadioValor("questao4");
+		        $("#parte1").hide();
+		        $("#parte2").hide();
+		        $("#parte6").hide();
+		        $("#parte4").hide();
+		        $("#parte3").hide();
+		        $("#menu_ent").hide();
+		        $("#parte5").fadeIn(1500);
+		    })
+
+		    // ao clicar no "btn_quiz1", abre a janela de início do primeiro quiz (digitar o nome)
 		$("#btn_quiz1").on('click', function() {
 		    $("#titulo_ent").hide();
 		    $("#subtitulo_quiz2").hide();
@@ -523,149 +527,143 @@
 		    var id_personagem = parseInt(Math.random() * 88 + 1);
 
 		    // Se o personagem sorteado for o personagem 17, o sistema faz o sorteio novamente pois o personagem 17 não existe
-		    if(id_personagem == 17)
-		    {
-		    	 id_personagem = parseInt(Math.random() * 88 + 1);
+		    if (id_personagem == 17) {
+		        id_personagem = parseInt(Math.random() * 88 + 1);
 		    }
 
 		    // Pesquisa do nome do personagem pelo id sorteado, inicializa o array "nome_tamanho" e faz verificações se o nome tem espaço, traço ou acento e transforma o nome em maiúsculo.
-		    swapiModule.getPerson(id_personagem, function(data){
-		    	var nome = data.name;
-		    	 nome_tamanho = new Array(nome.length);
-		    	for(var i=0; i<nome.length; i++){
-		    	if(nome.length>5)
-		    		if(i==6)
-		    		nome_tamanho[i]="__";
-		    	else
-		    	nome_tamanho[i]="__";
-		    	if (nome.charAt(i) == " ")
-                {
-                    nome_tamanho[i] = " ";
-                    count++;
-                }
-                else
-                	if(nome.charAt(i) == "-")
-                	{
-                		 nome_tamanho[i] = "-";
-                		 count++;
-                	}
-                else 
-                	if(nome.charAt(i) == "é")
-               		 {
-                		nome[i] = "e";
-               		 }
-                else
-                	nome_tamanho[i] = "__";
+		    swapiModule.getPerson(id_personagem, function(data) {
+		        var nome = data.name;
+		        nome_tamanho = new Array(nome.length);
+		        for (var i = 0; i < nome.length; i++) {
+		            if (nome.length > 5)
+		                if (i == 6)
+		                    nome_tamanho[i] = "__";
+		                else
+		                    nome_tamanho[i] = "__";
+		            if (nome.charAt(i) == " ") {
+		                nome_tamanho[i] = " ";
+		                count++;
+		            } else
+		            if (nome.charAt(i) == "-") {
+		                nome_tamanho[i] = "-";
+		                count++;
+		            } else
+		            if (nome.charAt(i) == "é") {
+		                nome[i] = "e";
+		            } else
+		                nome_tamanho[i] = "__";
+
+		        }
+		        var nome = removerAcentos(nome);
+		        var nome_person = "'" + nome.toUpperCase() + "'";
+		        var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">' + nome_tamanho + '</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" onkeyup="verifica([[NOME]])" style="width:200px;" name="txtLetra" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		        conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
+		        $("#form_forca").html(conteudo_forca);
+		        document.form_forca.txtLetra.focus(); // Deixa o input sempre selecionado
+		    })
+		})
+
+		// Função para remover os acentos da palavra.
+		function removerAcentos(nome) {
+		    var acentos = {
+		        a: /[\xE0-\xE6]/g,
+		        e: /[\xE8-\xEB]/g,
+		        i: /[\xEC-\xEF]/g,
+		        o: /[\xF2-\xF6]/g,
+		        u: /[\xF9-\xFC]/g,
+		        c: /\xE7/g,
+		        n: /\xF1/g
+		    };
+
+		    for (var letra in acentos) {
+		        var expressao = acentos[letra];
+		        nome = nome.replace(expressao, letra);
+		    }
+
+		    return nome;
+		}
+
+		// Função que verifica se o caracter digitado existe na palavra sorteada e verifica se ganhou ou perdeu e da dicas de acordo com a quantidade de erros.
+		function verifica(nome) {
+		    var letra = $("#inpt_forca").val();
+		    letra = letra.toUpperCase();
+		    for (var x = 0; x < guarda_char.length; x++) {
+		        if (letra == guarda_char[x]) {
+		            alert("LETRA JÁ DIGITADA");
+		            document.getElementById('inpt_forca').value = '';
+		            return;
+		        }
 
 		    }
-		    var nome = removerAcentos(nome);
-		    var nome_person = "'" + nome.toUpperCase() + "'";
-		    var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" onkeyup="verifica([[NOME]])" style="width:200px;" name="txtLetra" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
-   			conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
-   			$("#form_forca").html(conteudo_forca);
-   			document.form_forca.txtLetra.focus(); // Deixa o input sempre selecionado
-		})
-		    })
+		    guarda_char += letra;
+		    errou = 0;
 
- 		// Função para remover os acentos da palavra.
-		function removerAcentos( nome ) {
-		var acentos = {
-		a : /[\xE0-\xE6]/g,
-		e : /[\xE8-\xEB]/g,
-		i : /[\xEC-\xEF]/g,
-		o : /[\xF2-\xF6]/g,
-		u : /[\xF9-\xFC]/g,
-		c : /\xE7/g,
-		n : /\xF1/g
-	};
+		    for (var i = 0; i < nome.length; i++) {
 
-	for ( var letra in acentos ) {
-		var expressao = acentos[letra];
-		nome = nome.replace( expressao, letra );
-	}
+		        //Se o caracter corresponder com algum caracter do nome sorteado, substitui o "__" para o caracter 
+		        if ((nome[i] == letra)) {
+		            nome_tamanho[i] = letra;
+		            errou = 2;
+		            count++;
+		            var nome_person = "'" + nome.toUpperCase() + "'";
+		            var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">' + nome_tamanho + '</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" onkeyup="verifica([[NOME]])" name="txtLetra" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		            conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
+		            $("#form_forca").html(conteudo_forca);
+		            document.form_forca.txtLetra.focus();
+		        } else
+		        if (errou != 2)
+		            errou = 1;
+		    }
 
-	return nome;
-}
+		    //Verifica se o jogador ganhou
+		    if (count == nome_tamanho.length) {
+		        alert("Ganhou!");
+		        var conteudo_forca = '<p>PARABÉNS!</p>';
+		        $("#form_forca").append(conteudo_forca);
+		        $("#inpt_forca").prop('disabled', true);
+		    }
 
-				// Função que verifica se o caracter digitado existe na palavra sorteada e verifica se ganhou ou perdeu e da dicas de acordo com a quantidade de erros.
-			function verifica(nome)
-			{   
-				var letra = $("#inpt_forca").val();
-				letra = letra.toUpperCase();
-				for (var x = 0; x<guarda_char.length;x++){
-					if(letra == guarda_char[x]){
-						alert("LETRA JÁ DIGITADA");
-						document.getElementById('inpt_forca').value='';
-						return;
-					}
+		    // contagem de erros
+		    if (errou == 1) {
+		        alert("Errou ):");
+		        qtd_erros += 1;
+		        var nome_person = "'" + nome.toUpperCase() + "'";
+		        var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">' + nome_tamanho + '</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" onkeyup="verifica([[NOME]])" name="txtLetra" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		        conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
+		        $("#form_forca").html(conteudo_forca);
+		        document.form_forca.txtLetra.focus();
+		    }
 
-				}
-						guarda_char += letra;
-						errou = 0;
+		    // Da as dicas
+		    if (qtd_erros == 3) {
+		        if (conta_dica == 0) {
+		            for (var n = 0; n < nome_tamanho.length; n++) {
+		                if (nome_tamanho[n] == "__") {
+		                    conta_dica = 1;
+		                    var dica = n + 1;
+		                    var conteudo_forca = '<br><br><p>Dica: ' + dica + 'ª letra: ' + nome[n] + '</p><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">' + nome_tamanho + '</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" name="txtLetra" type="text" style="width:200px;" onkeyup="verifica([[NOME]])" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:40px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		                    conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
+		                    $("#form_forca").html(conteudo_forca);
+		                    document.form_forca.txtLetra.focus();
+		                    return;
+		                }
+		            }
+		        } 
+		        else
+		            return;
+		    }
 
-		    	for (var i = 0; i < nome.length; i++) {  
-		    	//Se o caracter corresponder com algum caracter do nome sorteado, substitui o "__" para o caracter 
-                       if((nome[i] == letra))
-                        {
-                            nome_tamanho[i] = letra;
-          		         	errou = 2;
-                            count ++;
-		         	var nome_person = "'" + nome.toUpperCase() + "'";
-		         	var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" onkeyup="verifica([[NOME]])" name="txtLetra" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
-		         	conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
-		         	$("#form_forca").html(conteudo_forca);	
-		         	  document.form_forca.txtLetra.focus();
-		           	}
-		         	else 
-		         		if(errou != 2)
-		         			errou = 1;	         	       	
-        	} 		
-        			//Verifica se o jogador ganhou
-        			if(count == nome_tamanho.length){
-        				alert("Ganhou!");
-        				var conteudo_forca = '<p>PARABÉNS!</p>';
-        				$("#form_forca").append(conteudo_forca);	
-        			$("#inpt_forca").prop('disabled', true);
-        			}
-						// contagem de erros
-        		       if(errou == 1){
-        		       	alert("Errou ):");
-		         		qtd_erros += 1;
-		         		var nome_person = "'" + nome.toUpperCase() + "'";
-		         		var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" onkeyup="verifica([[NOME]])" name="txtLetra" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
-		         		conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
-		         		$("#form_forca").html(conteudo_forca);
-		         		 document.form_forca.txtLetra.focus();	
-		         		}
-		         		// Da as dicas
-		         		if(qtd_erros == 3){
-		         			if(conta_dica == 0){
-		         			for(var n = 0; n <nome_tamanho.length; n++){
-		         				if(nome_tamanho[n] == "__"){
-		         					conta_dica = 1;
-		         					var dica = n+1;
-		         			var conteudo_forca = '<br><br><p>Dica: '+dica+'ª letra: '+nome[n]+'</p><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome_tamanho+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" name="txtLetra" type="text" style="width:200px;" onkeyup="verifica([[NOME]])" placeholder=" Letra..."></h2><p style="float:right; margin-right:50px; margin-top:40px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
-		         			conteudo_forca = conteudo_forca.replace("[[NOME]]", nome_person);
-		         			$("#form_forca").html(conteudo_forca);
-		         			 document.form_forca.txtLetra.focus();
-		         			return;
-		         				}
-		         			}	
-		         		}
-		         		else
-		         			return;
-		         	}
-		         	//Verifica se o jogador perdeu
-		         		if (qtd_erros == 6) {
-		         			alert("Perdeu ):");
-		         		var nome_person = "'" + nome.toUpperCase() + "'";
-		         		var conteudo_forca2 = '<p>O personagem era:</p>';
-		         		var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">'+nome+'</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" placeholder=" Letra..." disabled></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
-		         		$("#form_forca").html(conteudo_forca);	
-		         		$("#form_forca").append(conteudo_forca2);	
-		         		}
-        	}
-        
+		    //Verifica se o jogador perdeu
+		    if (qtd_erros == 6) {
+		        alert("Perdeu ):");
+		        var nome_person = "'" + nome.toUpperCase() + "'";
+		        var conteudo_forca2 = '<p>O personagem era:</p>';
+		        var conteudo_forca = '<br><br><p style="margin-left:60px; margin-top:90px; width:10px; float:left;">' + nome + '</p><h2 style="float:left; margin-top:200px;"><input maxlength=1 id="inpt_forca" type="text" style="width:200px;" placeholder=" Letra..." disabled></h2><p style="float:right; margin-right:50px; margin-top:90px;"><img src="img/yoda_result.png"><br><span style="font-size:30px;">' + qtd_erros + '/6</span></p>';
+		        $("#form_forca").html(conteudo_forca);
+		        $("#form_forca").append(conteudo_forca2);
+		    }
+		}
 
 		// ao clicar no "btn_voltar1_quiz2", volta para o menu de entretenimento.
 		$("#btn_voltar1_quiz2").on('click', function() {
@@ -755,19 +753,19 @@
 
 		// ao clicar no "btn_voltar7_quiz2", volta para a quinta questão do segundo quiz e diminui a quantidade de acertos obtidos
 		$("#btn_voltar7_quiz2").on('click', function() {
-		    acertos = getRadioValor("questao5_2")
-		    if (acertos == 1)
-		        acertou--;
-		    $("#parte2_quiz2").hide();
-		    $("#parte1_quiz2").hide();
-		    $("#parte3_quiz2").hide();
-		    $("#parte4_quiz2").hide();
-		    $("#parte5_quiz2").hide();
-		    $("#parte7_quiz2").hide();
-		    $("#parteX_resultado_quiz2").hide();
-		    $("#parte6_quiz2").fadeIn(1500);
-		})
-		// ao clicar no "btn_voltar3_quiz2", volta para a sexta questão do segundo quiz e diminui a quantidade de acertos obtidos
+		        acertos = getRadioValor("questao5_2")
+		        if (acertos == 1)
+		            acertou--;
+		        $("#parte2_quiz2").hide();
+		        $("#parte1_quiz2").hide();
+		        $("#parte3_quiz2").hide();
+		        $("#parte4_quiz2").hide();
+		        $("#parte5_quiz2").hide();
+		        $("#parte7_quiz2").hide();
+		        $("#parteX_resultado_quiz2").hide();
+		        $("#parte6_quiz2").fadeIn(1500);
+		    })
+		    // ao clicar no "btn_voltar3_quiz2", volta para a sexta questão do segundo quiz e diminui a quantidade de acertos obtidos
 		$("#btn_voltar8_quiz2").on('click', function() {
 		    acertos = getRadioValor("questao6_2")
 		    if (acertos == 2)
@@ -785,7 +783,7 @@
 
 		// ao clicar no "btn_voltar_ent", volta para a o menu de entretenimento
 		$("#btn_voltar_ent").on('click', function() {
-			$("#parte1_forca").hide();
+		    $("#parte1_forca").hide();
 		    $("#subtitulo_quiz1").hide();
 		    $("#subtitulo_quiz2").hide();
 		    $("#subtitulo_forca").hide();
