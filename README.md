@@ -1,17 +1,18 @@
-﻿# SITE COM A UTILIZAÇÃO DA API DO STAR WARS
-Aplicação web sobre star wars com pesquisa de personagem, um quiz sobre:
+﻿# Web application using SWAPI - The Star Wars API
 
--> "qual personagem você seria no filme".
+Star wars web application with character search.
+a quiz about:
 
-e outro quiz sobre: 
+-> "which character would you be in the movie".
 
--> "Quanto você sabe sobre Star Wars".
+and another quiz about:
 
+-> "How much do you know about Star Wars".
 
- -> Um jogo da velha sobre a saga.
+A tic-tac-toe about the saga and information about the movies.
 
-Para a realização da aplicação web foi utilizado: bootstrap e jQuery. 
+For the realization of the web application was used: bootstrap and jQuery. 
 
-O index está fora das pastas e o arquivo JavaScript esta na pasta js -> info.js
+The index is out of the folders and the JavaScript file is in the js -> info.js folder.
 
-Adicione a extensão no google chrome: https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en-US
+Add extension on google chrome: https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en-US
